@@ -1,0 +1,29 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Generated experiment output
+results/
+outputs/
+!results/.gitkeep
+!outputs/.gitkeep
+
+# Local-only data and large artifacts
+data/raw/
+*.pcap
+*.parquet
+*.h5
+*.hdf5
+
+# Office temporary files
+~$*.docx
+~$*.pptx
+~$*.xlsx
+

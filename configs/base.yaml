@@ -1,0 +1,40 @@
+project:
+  name: leo_routing_baseline
+  schema_version: 1
+
+topology:
+  type: abstract_leo_grid
+  orbit_planes: 6
+  satellites_per_plane: 6
+  intra_orbit_delay_ms: 7.0
+  inter_orbit_delay_ms: 12.0
+  link_capacity_mbps: 10.0
+  bidirectional: true
+
+queue:
+  capacity_packets: 64
+  discipline: fifo
+
+traffic:
+  packet_size_bytes: 1500
+  duration_ms: 60000
+  warmup_ms: 5000
+  load_levels_mbps_per_source: [1.0, 3.0, 6.0]
+  traffic_types: [uniform, hotspot]
+  hotspot_radius: 1
+  hotspot_fraction: 0.25
+
+routing:
+  algorithms:
+    - dijkstra_delay
+    - queue_weighted
+    - traffic_light
+  queue_weight: 0.5
+  update_period_ms: 100
+  no_route_policy: drop
+
+experiment:
+  seeds: [11, 23, 37, 53, 71]
+  output_dir: results
+  save_link_statistics: true
+
